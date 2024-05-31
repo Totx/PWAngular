@@ -1,0 +1,32 @@
+<h1 [style.backgroundColor]="color">
+    {{title | uppercase}}
+</h1>
+
+<div [ngStyle]="{ padding : '3em' }">
+    <ul class="list-group">
+        <li class="list-group-item active">Mis alumnos</li>
+        <li class="list-group-item" *ngFor="let alumno of alumnos">{{alumno}}</li>
+        <li class="list-group-item">
+            <div class="input-group">
+                <label for="inputAlumno">Introduce un nuevo alumno: </label>
+                <input #enterAlumno class="form-control" type="text" id="inputAlumno" />
+
+                <button class="btn btn-outline-primary" (click)="agregarAlumno(enterAlumno)"
+                    [title]="enterAlumno.value ? '' : 'Por favor, ingrese un nombre'">Agregar</button>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<button type="button" class="btn-primary" (click)="alternarDiv()">
+    Alternar Divs de abajo
+</button>
+
+<div *ngIf="mostrarDiv">
+    Se muestra div.
+</div>
+
+<div *ngIf="!mostrarDiv">
+    Se muestra div alternativo.
+</div>
+
